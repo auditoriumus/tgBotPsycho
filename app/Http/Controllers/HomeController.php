@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\RegisterControllers\UserRegisterController;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
-
     public function index()
     {
         if (Cache::has('register') && $this->message !== 'В начало' && $this->message !== '/start') {
@@ -42,6 +42,20 @@ class HomeController extends Controller
         if ($this->message == 'Записаться') {
             app(UserRegisterController::class)->index();
             return;
+        }
+
+        //админ-панель
+        if ($this->message == '/admin') {
+            if ($this->checkAdmin()) {
+                app(CmsController::class)->index();
+            }
+            return;
+        }
+
+        if ($this->message == 'Выгрузка по клиентам') {
+            if ($this->checkAdmin()) {
+                app(CmsController::class)->getClientsCsv();
+            }
         }
     }
 }

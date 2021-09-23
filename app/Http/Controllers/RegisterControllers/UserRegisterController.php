@@ -4,6 +4,8 @@
 namespace App\Http\Controllers\RegisterControllers;
 
 
+use App\Http\Services\AddClientService;
+use App\Http\Services\GetSpecialistService;
 use Illuminate\Support\Facades\Cache;
 
 class UserRegisterController extends RegisterController
@@ -36,9 +38,12 @@ class UserRegisterController extends RegisterController
     public function createUser(){
         if (Cache::has('second_name_' . $this->chatId)) {
 
+            $this->registerChatId();
+            app(AddClientService::class)->addSecondName($this->chatId, $this->message);
+
             $this->telegram->sendMessage([
                 'chat_id' => $this->chatId,
-                'text' => 'Фамилия ' . $this->message . ' записывается в базу (база данных пока отключена)' . "\n" . 'Введите имя:',
+                'text' => 'Фамилия принята' . "\n" . 'Введите имя:',
                 'reply_markup' => json_encode(
                     [
                         'keyboard' => [
@@ -58,9 +63,12 @@ class UserRegisterController extends RegisterController
 
         } elseif (Cache::has('first_name_' . $this->chatId)) {
 
+            $this->registerChatId();
+            app(AddClientService::class)->addFirstName($this->chatId, $this->message);
+
             $this->telegram->sendMessage([
                 'chat_id' => $this->chatId,
-                'text' => 'Имя ' . $this->message . ' записывается в базу (база данных пока отключена)' . "\n" . 'Введите отчество:',
+                'text' => 'Имя принято' . "\n" . 'Введите отчество:',
                 'reply_markup' => json_encode(
                     [
                         'keyboard' => [
@@ -80,9 +88,12 @@ class UserRegisterController extends RegisterController
 
         } elseif (Cache::has('middle_name_' . $this->chatId)) {
 
+            $this->registerChatId();
+            app(AddClientService::class)->addPatronymic($this->chatId, $this->message);
+
             $this->telegram->sendMessage([
                 'chat_id' => $this->chatId,
-                'text' => 'Отчество ' . $this->message . ' записывается в базу (база данных пока отключена)' . "\n" . 'Введите номер телефона:',
+                'text' => 'Отчество принято' . "\n" . 'Введите номер телефона:',
                 'reply_markup' => json_encode(
                     [
                         'keyboard' => [
@@ -102,9 +113,12 @@ class UserRegisterController extends RegisterController
 
         } elseif (Cache::has('phone_' . $this->chatId)) {
 
+            $this->registerChatId();
+            app(AddClientService::class)->addPhone($this->chatId, $this->message);
+
             $this->telegram->sendMessage([
             'chat_id' => $this->chatId,
-            'text' => 'Телефон ' . $this->message . ' записывается в базу (база данных пока отключена)' . "\n" . 'Опишите любой расстановочный опыт если есть (если нет напишите "нет опыта"):',
+            'text' => 'Телефон принят' . "\n" . 'Введите email',
             'reply_markup' => json_encode(
                 [
                     'keyboard' => [
@@ -119,14 +133,49 @@ class UserRegisterController extends RegisterController
         ]);
 
             Cache::pull('phone_' . $this->chatId);
-            Cache::put('experience_' . $this->chatId, 'true');
+            Cache::put('email_' . $this->chatId, 'true');
             return;
 
-        } elseif (Cache::has('experience_' . $this->chatId)) {
+        } elseif (Cache::has('email_' . $this->chatId)) {
+
+            $this->registerChatId();
+            app(AddClientService::class)->addEmail($this->chatId, $this->message);
 
             $this->telegram->sendMessage([
                 'chat_id' => $this->chatId,
-                'text' => 'Опыт ' . $this->message . ' записывается в базу (база данных пока отключена)' . "\n" . 'Благодарим за заявку, в ближайшее время мы с вами свяжемся',
+                'text' => 'Email принят' . "\n" . 'Опишите любой расстановочный опыт если есть (если нет напишите "нет опыта"):',
+                'reply_markup' => json_encode(
+                    [
+                        'keyboard' => [
+                            [
+                                'В начало',
+                            ],
+                        ],
+                        'resize_keyboard' => true,
+                        'one_time_keyboard' => false,
+                    ]
+                ),
+            ]);
+
+            Cache::pull('email_' . $this->chatId);
+            Cache::put('experience_' . $this->chatId, 'true');
+
+        } elseif (Cache::has('experience_' . $this->chatId)) {
+
+            $this->registerChatId();
+            app(AddClientService::class)->addExperience($this->chatId, $this->message);
+
+            $specialistsArray = app(GetSpecialistService::class)->getAll();
+            $specialists = '';
+
+            foreach ($specialistsArray as $spec) {
+                $specialists .= $spec['id'] . '. ' . $spec['name'] .  "\n";
+            }
+
+            $this->telegram->sendMessage([
+                'chat_id' => $this->chatId,
+                //'text' => 'Опыт принят' . "\n" . 'Благодарим за заявку, в ближайшее время мы с вами свяжемся',
+                'text' => 'Опыт принят' . "\n" . 'К кому из специалистов вы хотели бы записаться (введите номер специалиста):' . "\n" . $specialists,
                 'reply_markup' => json_encode(
                     [
                         'keyboard' => [
@@ -141,7 +190,40 @@ class UserRegisterController extends RegisterController
             ]);
 
             Cache::pull('experience_' . $this->chatId);
+            Cache::put('specialist_' . $this->chatId, 'true');
             return;
+        }  elseif (Cache::has('specialist_' . $this->chatId)) {
+
+            $this->registerChatId();
+            app(AddClientService::class)->addSpecialistId($this->chatId, $this->message);
+
+
+            $this->telegram->sendMessage([
+                'chat_id' => $this->chatId,
+                'text' => 'Принято' . "\n" . 'Благодарим за заявку, в ближайшее время мы с вами свяжемся',
+                'reply_markup' => json_encode(
+                    [
+                        'keyboard' => [
+                            [
+                                'В начало',
+                            ],
+                        ],
+                        'resize_keyboard' => true,
+                        'one_time_keyboard' => false,
+                    ]
+                ),
+            ]);
+
+            Cache::pull('specialist_' . $this->chatId, 'true');
+            return;
+        }
+    }
+
+    protected function registerChatId()
+    {
+        $chat = app(AddClientService::class)->findChat($this->chatId);
+        if (empty($chat)) {
+            app(AddClientService::class)->addChatId($this->chatId);
         }
     }
 }

@@ -43,6 +43,8 @@ class Controller extends BaseController
 
     protected string $message;
 
+    protected $username;
+
     protected array $internalMenu = [
         [
             'name' => 'Ситуация SOS',
@@ -155,5 +157,11 @@ class Controller extends BaseController
         $this->result = $this->telegram->getWebhookUpdate();
         $this->chatId = $this->result['message']['chat']['id'];
         $this->message = $this->result['message']['text'] ?? '';
+        $this->username = $this->result['message']['from']['username'] ?? '';
+    }
+
+    protected function checkAdmin(): bool
+    {
+        return ($this->username == 'Shutova_iii' || $this->username == 'ysadyev');
     }
 }
