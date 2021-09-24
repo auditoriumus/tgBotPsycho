@@ -2,10 +2,16 @@
 
 @section('content')
     @if(!empty($clients))
-        <form action="{{ route('get_clients_csv') }}" method="get" class="mt-3">
-            @csrf
-            <button type="submit" class="btn btn-success">Скачать</button>
-        </form>
+        <div class="mt-3 row">
+            <form action="{{ route('get_clients_csv') }}" method="get" class="col-3">
+                @csrf
+                <button type="submit" class="btn btn-success">Скачать список клиентов</button>
+            </form>
+            <form action="{{ route('get_specialists_csv') }}" method="get" class="col-4">
+                @csrf
+                <button type="submit" class="btn btn-success">Скачать список по специалистам</button>
+            </form>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
