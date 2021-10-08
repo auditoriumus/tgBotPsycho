@@ -8,4 +8,9 @@ class GetSpecialistService extends BaseService
     {
         return $this->specialistRepository->getAll();
     }
+
+    public function getByName(string $name)
+    {
+        return $this->specialistRepository->getByName($name);
+    }
 }

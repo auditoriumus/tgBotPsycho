@@ -8,4 +8,9 @@ class SpecialistRepository extends BaseRepository
     {
         return $this->model->all();
     }
+
+    public function getByName(string $name)
+    {
+        return $this->model->where('name', $name)->first();
+    }
 }

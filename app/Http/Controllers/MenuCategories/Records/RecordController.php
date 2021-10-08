@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\MenuCategories\Records;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\GroupServices\GetGroupService;
 use App\Http\Services\SpecialistServices\GetSpecialistService;
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -89,6 +91,7 @@ class RecordController extends Controller
             ['В начало']
         ];
 
+
         $this->telegram->sendMessage([
             'chat_id' => $this->chatId,
             'text' => 'Выберите:',
@@ -99,17 +102,99 @@ class RecordController extends Controller
     //Выбор специалиста
     public function chooseSpecialist()
     {
-        $menu = [
-            ['Даты ближайших групп', 'Лист ожидания (если даты не подходят)'],
-            ['О специалисте'],
-            ['В начало']
-        ];
+        $text = ' ';
+        $menu = [];
+
+        if (Cache::has('event_' . $this->chatId)) {
+            if (Cache::get('event_' . $this->chatId) == 'faq_specialists') {
+                $specialist = app(GetSpecialistService::class)->getByName($this->message);
+                $text = $specialist->description;
+            }
+            $menu = [
+                ['В начало']
+            ];
+
+            $text = 'Выберите:';
+        } else {
+
+            Cache::put('event_' . $this->chatId, 'record_to');
+            Cache::put('record_to_' . $this->chatId, $this->message);
+            $groups = app(GetGroupService::class)->getGroupBySpecialistName($this->message);
+
+            if (!empty($groups)) {
+                $i = 1;
+                foreach ($groups as $group) {
+
+                    if ($group->count < 15) {
+
+                        $carbon = Carbon::createFromFormat('Y-m-d', $group->date);
+                        $text .= $carbon->format('d.m.Y') . "\n";
+
+                        $tmp = [
+                            'group_date_number' => $i,
+                            'group_date_id' => $group->id,
+                            'date' => $carbon->format('d.m.Y')
+                        ];
+
+                        $dates[] = $tmp;
+                    }
+
+                    $i++;
+                }
+
+                Cache::put('group_dates_' . $this->chatId, json_encode($dates));
+
+                $text .= 'Введите дату и нажмите "Выбрать группу":';
+
+            }
+
+
+            $menu = [
+                ['Выбрать группу', 'Лист ожидания (если даты не подходят)'],
+                ['В начало']
+            ];
+        }
+
 
         $this->telegram->sendMessage([
             'chat_id' => $this->chatId,
-            'text' => 'Выберите:',
+            'text' => $text,
             'reply_markup' => json_encode(['keyboard' => $menu])
         ]);
+    }
+
+    //выбрать группу по номеру даты
+    public function chooseGroupIdByGroupDateNumber($groupDateNumber)
+    {
+        if (Cache::has('group_dates_' . $this->chatId)) {
+            $dates = json_decode(Cache::get('group_dates_' . $this->chatId), true);
+
+            foreach ($dates as $date) {
+                if ($date['group_date_number'] == $groupDateNumber) {
+                    $groupId = $date['group_date_id'];
+                    Cache::clear();
+                    Cache::put('group_id_' . $this->chatId, $groupId);
+                    break;
+                }
+            }
+        }
+    }
+
+
+    public function chooseGroupIdByGroupDate($groupDate)
+    {
+        if (Cache::has('group_dates_' . $this->chatId)) {
+            $dates = json_decode(Cache::get('group_dates_' . $this->chatId), true);
+
+            foreach ($dates as $date) {
+                if ($date['date'] == $groupDate) {
+                    $groupId = $date['group_date_id'];
+                    Cache::clear();
+                    Cache::put('group_id_' . $this->chatId, $groupId);
+                    break;
+                }
+            }
+        }
     }
 
     //О специалисте

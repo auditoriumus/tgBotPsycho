@@ -7,7 +7,6 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Cache;
 use Telegram\Bot\Api;
 
 class Controller extends BaseController
@@ -22,6 +21,7 @@ class Controller extends BaseController
 
     public function __construct(Request $request)
     {
+        $this->phoneValidate('+89778732.8&12');
         $this->telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
         $updates = $this->telegram->getWebhookUpdate();
 
@@ -36,5 +36,41 @@ class Controller extends BaseController
             $this->message = $updates['message']['text'] ?? '';
             $this->data = $callbackQuery['data'] ? json_decode($callbackQuery['data'], true) : '';
         }
+    }
+
+    protected function russianPhoneValidate(string $phone): bool
+    {
+        //убираем пробелы по бокам
+        $phone = trim($phone);
+        //находим и убираем пробелы внутри номера
+        $phone = preg_replace('# #', '', $phone);
+        //находим и убираем +
+        $phone = str_replace('+', '', $phone);
+        //Если номер начинается с 8 или 7
+        if (mb_strlen($phone) == 11 && ($phone[0] == 7 || $phone[0] == 8)) {
+            $phone = substr($phone, 1);
+        }
+        //если после преобразований в номере осталось 10 символов
+        if (mb_strlen($phone) == 10) {
+            //если все цифры
+            if (ctype_digit($phone)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected function phoneValidate(string $phone): bool
+    {
+        //убираем пробелы по бокам
+        $phone = trim($phone);
+        //находим и убираем пробелы внутри номера
+        $phone = preg_replace('# #', '', $phone);
+        //находим и убираем +
+        $phone = str_replace('+', '', $phone);
+        if (ctype_digit($phone)) {
+            return true;
+        }
+        return false;
     }
 }

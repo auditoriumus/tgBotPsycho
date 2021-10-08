@@ -4,10 +4,14 @@ namespace App\Http\Controllers\MenuControllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuCategories\Cycle\SpiritualCycleController;
+use App\Http\Controllers\MenuCategories\FAQ\AssistantController;
 use App\Http\Controllers\MenuCategories\FAQ\CirclesController;
 use App\Http\Controllers\MenuCategories\FAQ\FaqController;
+use App\Http\Controllers\MenuCategories\FAQ\PlacementGroupsController;
+use App\Http\Controllers\MenuCategories\FAQ\SpecialistsController;
 use App\Http\Controllers\MenuCategories\NextButton;
 use App\Http\Controllers\MenuCategories\Recommendations\RecommendationsController;
+use App\Http\Controllers\MenuCategories\Records\CalendarController;
 use App\Http\Controllers\MenuCategories\Records\ClientController;
 use App\Http\Controllers\MenuCategories\Records\RecordController;
 use App\Http\Services\ClientServices\GetClientService;
@@ -58,13 +62,13 @@ class MenuOptionsController extends Controller
             'class' => RecordController::class,
             'method' => 'displayCalendar'
         ],
-        'Даты ближайших групп' => [
+        'Выбрать группу' => [
             'class' => ClientController::class,
             'method' => 'clientRegister'
         ],
         'Лист ожидания (если даты не подходят)' => [
             'class' => ClientController::class,
-            'method' => 'clientRegister'
+            'method' => 'waitingList'
         ],
         'Далее' => [
             'class' => NextButton::class,
@@ -75,9 +79,33 @@ class MenuOptionsController extends Controller
             'method' => 'displayWhatIsIt'
         ],
         'Специалисты' => [
-            'class' => RecordController::class,
-            'method' => 'displaySpecialistsList'
-        ]
+            'class' => SpecialistsController::class,
+            'method' => 'displayAll'
+        ],
+        'Расстановочные группы' => [
+            'class' => PlacementGroupsController::class,
+            'method' => 'handle'
+        ],
+        '"Работа" на группе' => [
+            'class' => PlacementGroupsController::class,
+            'method' => 'handle'
+        ],
+        'Вселенский круг' => [
+            'class' => CirclesController::class,
+            'method' => 'worldCircle'
+        ],
+        'Круг энергий' => [
+            'class' => CirclesController::class,
+            'method' => 'energyCircle'
+        ],
+        'Ангельский круг' => [
+            'class' => CirclesController::class,
+            'method' => 'angelCircle'
+        ],
+        'Участие в качестве заместителя' => [
+            'class' => AssistantController::class,
+            'method' => 'handle'
+        ],
     ];
 
     public function executeMenu(string $menuOption)
@@ -105,6 +133,11 @@ class MenuOptionsController extends Controller
             app(RecordController::class)->changeCalendar();
         }
 
+        //Для выбора даты по в календаре
+        if (isset($this->data['month_number'])) {
+            app(CalendarController::class)->chooseDate($this->data['date'], $this->data['month_number']);
+        }
+
         if (Cache::has('event_' . $this->chatId)) {
             $event = Cache::get('event_' . $this->chatId);
             switch ($event) {
@@ -128,6 +161,12 @@ class MenuOptionsController extends Controller
                     break;
                 case 'cancel_record':
                     Cache::put('cancel_record_' . $this->chatId, $this->message);
+                    break;
+                case 'faq_specialists':
+                    app(SpecialistsController::class)->displayCurrent($this->message);
+                    break;
+                case 'record_to':
+                    app(RecordController::class)->chooseGroupIdByGroupDate($this->message);
                     break;
             }
         }

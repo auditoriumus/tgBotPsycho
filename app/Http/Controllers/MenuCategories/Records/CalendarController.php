@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\MenuCategories\Records;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\GroupServices\GetGroupService;
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -47,7 +49,7 @@ class CalendarController extends Controller
 
         $keyboard = [
             [
-                ['text' => $months[$this->month-1], 'callback_data' => json_encode([
+                ['text' => $months[$this->month - 1], 'callback_data' => json_encode([
                     'data' => 'Сентябрь'
                 ])]
             ],
@@ -167,7 +169,36 @@ class CalendarController extends Controller
             'chat_id' => $this->chatId,
             'message_id' => $this->data['message_id']
         ]);
-        file_get_contents('https://api.telegram.org/bot'.env('TELEGRAM_BOT_TOKEN')."/editMessageText?{$data}&reply_markup={$keyboard}");
+        file_get_contents('https://api.telegram.org/bot' . env('TELEGRAM_BOT_TOKEN') . "/editMessageText?{$data}&reply_markup={$keyboard}");
+    }
+
+
+    public function chooseDate(string $date, string $month)
+    {
+        $carbon = Carbon::createFromFormat('Y-m-d', '2021-'.$month.'-'.$date);
+        $date = $carbon->format('Y-m-d');
+        $groups = app(GetGroupService::class)->getFreeGroupByDate($date);
+
+        $text = '';
+
+        if (!empty($groups)) {
+            foreach ($groups as $group) {
+                if ($group->count < 15) {
+                    $carbon = Carbon::createFromFormat('Y-m-d', $group->date);
+                    $text = $carbon->format('d.m.Y') . ' - ' . $group->name . "\n";
+                }
+            }
+
+            $menu = [
+                ['В начало']
+            ];
+
+            $this->telegram->sendMessage([
+                'chat_id' => $this->chatId,
+                'text' => $text,
+                'reply_markup' => json_encode(['keyboard' => $menu])
+            ]);
+        }
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MenuCategories\Records;
 use App\Http\Controllers\Controller;
 use App\Http\Services\ClientServices\AddUpdateClientService;
 use App\Http\Services\ClientServices\GetClientService;
+use App\Http\Services\GroupsClientsServices\AddUpdateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -34,17 +35,36 @@ class ClientController extends Controller
     {
         $phone = Cache::get('phone_register_' . $this->chatId);
 
+        if (empty($phone) || !$this->phoneValidate($phone)) {
+            $menu = [
+                ['Далее'],
+                ['В начало']
+            ];
+
+            $this->telegram->sendMessage([
+                'chat_id' => $this->chatId,
+                'text' => 'Неверный ввод, попробуйте еще раз',
+                'reply_markup' => json_encode(['keyboard' => $menu])
+            ]);
+            return;
+        }
+
         //Далее при запонлнении анкеты работаем с этими данными
         Cache::put('current_phone_' . $this->chatId, $phone);
         $client = app(GetClientService::class)->getByPhone($phone);
         if (!empty($client)) {
+
+            $groupId = Cache::get('group_id_' . $this->chatId);
+
+            app(AddUpdateService::class)->addNew($groupId, $client->id);
+
             $menu = [
                 ['В начало']
             ];
 
             $this->telegram->sendMessage([
                 'chat_id' => $this->chatId,
-                'text' => 'Вы уже зарегистрированы:',
+                'text' => 'Вы зарегистрированы. Мы скоро с вами свяжемся',
                 'reply_markup' => json_encode(['keyboard' => $menu])
             ]);
             return;
@@ -123,6 +143,14 @@ class ClientController extends Controller
         if (!empty($client)) {
             $patronymic = Cache::get('experience_' . $this->chatId) ?? '';
             if (app(AddUpdateClientService::class)->updateByPhone($phone, 'experience', $patronymic)) {
+
+                $client = app(GetClientService::class)->getByPhone($phone);
+                $clientId = $client->id;
+                $groupId = Cache::get('group_id_' . $this->chatId);
+                if (!empty($clientId) && !empty($groupId)) {
+                    app(AddUpdateService::class)->addNew($groupId, $clientId);
+                }
+
                 Cache::pull('experience_' . $this->chatId);
                 $menu = [
                     ['В начало']
@@ -135,5 +163,11 @@ class ClientController extends Controller
                 ]);
             }
         }
+    }
+
+    public function waitingList()
+    {
+        Cache::put('event_' . $this->chatId, 'phone_register');
+        $this->stepUp('номер телефона');
     }
 }

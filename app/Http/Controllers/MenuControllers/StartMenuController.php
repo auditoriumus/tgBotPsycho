@@ -12,7 +12,8 @@ class StartMenuController extends Controller
         'Отменить запись',
         'FAQ',
         'Духовный цикл',
-        'Рекомендации'
+        'Рекомендации',
+        'Расписание'
     ];
 
     public function displayStartMenu()
