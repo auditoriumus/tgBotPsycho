@@ -24,6 +24,8 @@ class CreateGroupsTable extends Migration
                 ->references('id')
                 ->on('specialists');
 
+            $table->boolean('experience')->default(false);
+
             $table->softDeletes();
             $table->timestamps();
         });

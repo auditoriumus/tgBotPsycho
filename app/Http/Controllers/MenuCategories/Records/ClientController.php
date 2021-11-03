@@ -28,7 +28,7 @@ class ClientController extends Controller
     public function clientRegister()
     {
         Cache::put('event_' . $this->chatId, 'phone_register');
-        $this->stepUp('номер телефона');
+        $this->stepUp('номер телефона начиная с +7');
     }
 
     public function phoneRegister()
@@ -43,7 +43,7 @@ class ClientController extends Controller
 
             $this->telegram->sendMessage([
                 'chat_id' => $this->chatId,
-                'text' => 'Неверный ввод, попробуйте еще раз',
+                'text' => 'Неверный ввод, попробуйте еще раз. Вводите номер начиная с +7',
                 'reply_markup' => json_encode(['keyboard' => $menu])
             ]);
             return;
@@ -100,40 +100,40 @@ class ClientController extends Controller
             $firstName = Cache::get('first_name_register_' . $this->chatId) ?? '';
             if (app(AddUpdateClientService::class)->updateByPhone($phone, 'first_name', $firstName)) {
                 Cache::pull('first_name_register_' . $this->chatId);
-                Cache::put('event_' . $this->chatId, 'patronymic');
-                $this->stepUp('отчество (или напишите "нет отчества")');
-            }
-        }
-    }
-
-    public function patronymicRegister()
-    {
-        $phone = Cache::get('current_phone_' . $this->chatId);
-        $client = app(GetClientService::class)->getByPhone($phone);
-        if (!empty($client)) {
-            $patronymic = Cache::get('patronymic_' . $this->chatId) ?? '';
-            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'patronymic', $patronymic)) {
-                Cache::pull('patronymic_' . $this->chatId);
-                Cache::put('event_' . $this->chatId, 'email');
-                $this->stepUp('адрес электронной почты');
-            }
-        }
-    }
-
-
-    public function emailRegister()
-    {
-        $phone = Cache::get('current_phone_' . $this->chatId);
-        $client = app(GetClientService::class)->getByPhone($phone);
-        if (!empty($client)) {
-            $patronymic = Cache::get('email_' . $this->chatId) ?? '';
-            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'email', $patronymic)) {
-                Cache::pull('email_' . $this->chatId);
                 Cache::put('event_' . $this->chatId, 'experience');
                 $this->stepUp('опыт (или напишите "нет опыта")');
             }
         }
     }
+
+//    public function patronymicRegister()
+//    {
+//        $phone = Cache::get('current_phone_' . $this->chatId);
+//        $client = app(GetClientService::class)->getByPhone($phone);
+//        if (!empty($client)) {
+//            $patronymic = Cache::get('patronymic_' . $this->chatId) ?? '';
+//            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'patronymic', $patronymic)) {
+//                Cache::pull('patronymic_' . $this->chatId);
+//                Cache::put('event_' . $this->chatId, 'email');
+//                $this->stepUp('адрес электронной почты');
+//            }
+//        }
+//    }
+
+
+//    public function emailRegister()
+//    {
+//        $phone = Cache::get('current_phone_' . $this->chatId);
+//        $client = app(GetClientService::class)->getByPhone($phone);
+//        if (!empty($client)) {
+//            $patronymic = Cache::get('email_' . $this->chatId) ?? '';
+//            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'email', $patronymic)) {
+//                Cache::pull('email_' . $this->chatId);
+//                Cache::put('event_' . $this->chatId, 'experience');
+//                $this->stepUp('опыт (или напишите "нет опыта")');
+//            }
+//        }
+//    }
 
 
     public function experienceRegister()
@@ -141,10 +141,9 @@ class ClientController extends Controller
         $phone = Cache::get('current_phone_' . $this->chatId);
         $client = app(GetClientService::class)->getByPhone($phone);
         if (!empty($client)) {
-            $patronymic = Cache::get('experience_' . $this->chatId) ?? '';
-            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'experience', $patronymic)) {
+            $experience = Cache::get('experience_' . $this->chatId) ?? '';
+            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'experience', $experience)) {
 
-                $client = app(GetClientService::class)->getByPhone($phone);
                 $clientId = $client->id;
                 $groupId = Cache::get('group_id_' . $this->chatId);
                 if (!empty($clientId) && !empty($groupId)) {
@@ -152,18 +151,47 @@ class ClientController extends Controller
                 }
 
                 Cache::pull('experience_' . $this->chatId);
+                Cache::put('event_' . $this->chatId, 'approval');
+
+                $menu = [
+                    ['Разрешить', 'Не разрешать'],
+                    ['В начало'],
+                ];
+
+                $this->telegram->sendMessage([
+                    'chat_id' => $this->chatId,
+                    'text' => 'Необходимо ваше разрешение на обработку персональных данных',
+                    'reply_markup' => json_encode(['keyboard' => $menu])
+                ]);
+            }
+        }
+    }
+
+
+    //согласие на обработку данных
+    public function approvalRegister()
+    {
+        $phone = Cache::get('current_phone_' . $this->chatId);
+        $client = app(GetClientService::class)->getByPhone($phone);
+
+        if (!empty($client)) {
+            $approval = $this->message == 'Разрешить';
+            if (app(AddUpdateClientService::class)->updateByPhone($phone, 'personal_data_processing_approval', $approval)) {
+
                 $menu = [
                     ['В начало']
                 ];
 
                 $this->telegram->sendMessage([
                     'chat_id' => $this->chatId,
-                    'text' => 'Благодарим за регистрацию, мы скоро с вами свяжемся',
+                    'text' => 'Благодарим за регистрацию, мы свяжемся с вами в течении 72 часов',
                     'reply_markup' => json_encode(['keyboard' => $menu])
                 ]);
             }
         }
     }
+
+
 
     public function waitingList()
     {

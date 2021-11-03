@@ -18,5 +18,5 @@ Route::post('/', [\App\Http\Controllers\HomeController::class, 'handle']);
 //Route::post('/', function () {return;});
 
 Route::get('/', function () {
-    app(\App\Http\Controllers\MenuCategories\Records\CalendarController::class)->changeCalendar();
+    return view('home');
 });

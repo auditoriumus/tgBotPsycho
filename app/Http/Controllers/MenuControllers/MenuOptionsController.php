@@ -106,6 +106,14 @@ class MenuOptionsController extends Controller
             'class' => AssistantController::class,
             'method' => 'handle'
         ],
+        'Разрешить' => [
+            'class' => ClientController::class,
+            'method' => 'approvalRegister'
+        ],
+        'Не разрешать' => [
+            'class' => ClientController::class,
+            'method' => 'approvalRegister'
+        ]
     ];
 
     public function executeMenu(string $menuOption)
@@ -148,7 +156,7 @@ class MenuOptionsController extends Controller
                     Cache::put('last_name_register_' . $this->chatId, $this->message);
                     break;
                 case 'first_name_register':
-                    Cache::put('first_name_register' . $this->chatId, $this->message);
+                    Cache::put('first_name_register_' . $this->chatId, $this->message);
                     break;
                 case 'patronymic':
                     Cache::put('patronymic_' . $this->chatId, $this->message);

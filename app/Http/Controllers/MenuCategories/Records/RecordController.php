@@ -124,21 +124,19 @@ class RecordController extends Controller
             if (!empty($groups)) {
                 $i = 1;
                 foreach ($groups as $group) {
-
                     if ($group->count < 15) {
-
                         $carbon = Carbon::createFromFormat('Y-m-d', $group->date);
-                        $text .= $carbon->format('d.m.Y') . "\n";
-
+                        $text .= $carbon->format('d.m.Y') . ' - запись возможна' . "\n";
                         $tmp = [
                             'group_date_number' => $i,
                             'group_date_id' => $group->id,
                             'date' => $carbon->format('d.m.Y')
                         ];
-
                         $dates[] = $tmp;
+                    } else {
+                        $carbon = Carbon::createFromFormat('Y-m-d', $group->date);
+                        $text .= $carbon->format('d.m.Y') . ' - запись закрыта' . "\n";
                     }
-
                     $i++;
                 }
 

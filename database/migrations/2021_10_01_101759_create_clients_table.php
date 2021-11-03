@@ -21,6 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('phone')->unique();
             $table->string('email')->nullable();
             $table->text('experience')->nullable();
+            $table->boolean('personal_data_processing_approval')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

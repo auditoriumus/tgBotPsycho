@@ -33,6 +33,9 @@ class NextButton extends Controller
                 case 'experience':
                     app(ClientController::class)->experienceRegister();
                     break;
+                case 'approval':
+                    app(ClientController::class)->approvalRegister();
+                    break;
                 case 'cancel_record':
                     app(RecordController::class)->deleteRecord();
                     break;
