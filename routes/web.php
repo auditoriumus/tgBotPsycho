@@ -20,3 +20,28 @@ Route::post('/', [\App\Http\Controllers\HomeController::class, 'handle']);
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/questionnaire', function () {
+    return view('pages.questionnaire');
+})->name('questionnaire');
+
+Route::post('/questionnaire', [\App\Http\Controllers\SiteControllers\QuestionnaireController::class, 'addQuestionnaire'])->name('add_questionnaire');
+
+Route::group(['prefix' => 'practices'], function () {
+    Route::get('who_is_hungry', [\App\Http\Controllers\SiteControllers\Practices\HungryController::class, 'index'])->name('who_is_hungry');
+});
+
+Route::group(['prefix' => 'pay'], function () {
+    Route::get('success', function () {
+        return view('pages.pay.success');
+    });
+    Route::get('reject', function () {
+        return view('pages.pay.reject');
+    });
+    Route::get('take_a_part', function () {
+        return view('pages.pay.form');
+    })->name('take_a_part');
+
+    Route::post('sent_payment', [\App\Http\Controllers\SiteControllers\PayController::class, 'pay'])->name('sent_payment');
+});
+
+
