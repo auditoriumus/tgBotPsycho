@@ -30,8 +30,8 @@
                                     Лекции
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" href="#">
-                                        Inspring
+                                    <a class="dropdown-item" href="https://www.ispring.ru">
+                                        Ispring
                                     </a>
                                 </div>
                             </li>

@@ -4,12 +4,15 @@ namespace App\Http\Controllers\SiteControllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\OrderServices\AddNewOrderService;
+use Illuminate\Contracts\Support\MessageProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PayController extends Controller
 {
     public function pay(Request $request)
     {
+        return redirect('/')->with('error', 'В данный момент оплата недоступна');
         app(AddNewOrderService::class)->createOrder($request->all());
         dd($request);
     }

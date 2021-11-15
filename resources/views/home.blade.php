@@ -81,7 +81,7 @@
                 <div class="mt-5 text-center">
                     <div>
                         <a href="#single_product_list" class="btn_1">Продукты</a>
-                        <a href="#" class="btn_1">Заказать консультацию</a>
+                        <a href="{{ route('questionnaire') }}" class="btn_1">Заказать консультацию</a>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                                 <div class="single_product_content">
                                     <h5></h5>
                                     <h2><a href="single-product.html">Личная консультация</a></h2>
-                                    <a href="https://www.ispring.ru" class="btn_3">Попробовать</a>
+                                    <a href="{{ route('questionnaire') }}" class="btn_3">Попробовать</a>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                                 <div class="single_product_content">
                                     <h5></h5>
                                     <h2><a href="single-product.html">Онлайн практики</a></h2>
-                                    <a href="https://www.ispring.ru" class="btn_3">Узнать</a>
+                                    <a href="{{ route('who_is_hungry') }}" class="btn_3">Узнать</a>
                                 </div>
                             </div>
                         </div>
