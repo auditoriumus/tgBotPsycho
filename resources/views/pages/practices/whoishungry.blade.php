@@ -45,6 +45,7 @@
                     </div>
                 </div>
                 <div class="mt-5 text-center">
+                    <h2>Всего 990 рублей</h2>
                     <div>
                         <a href="{{ route('questionnaire') }}" class="btn_1">Принять участие</a>
                     </div>
@@ -55,32 +56,7 @@
 
     <!--::footer_part start::-->
     <footer class="footer_part subscribe_part">
-        <div class="footer_iner">
-            <div class="container">
-                {{--            <div class="row justify-content-between align-items-center">--}}
-                {{--                <div class="col-lg-8">--}}
-                {{--                    <div class="footer_menu">--}}
-                {{--                        <div class="footer_logo">--}}
-                {{--                            <a href="index.html"><img src="" alt="#"></a>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="footer_menu_item">--}}
-                {{--                            <a href="index.html">ссылка</a>--}}
-                {{--                            <a href="about.html">ссылка</a>--}}
-                {{--                            <a href="product_list.html">ссылка</a>--}}
-                {{--                            <a href="#">ссылка</a>--}}
-                {{--                            <a href="blog.html">ссылка</a>--}}
-                {{--                            <a href="contact.html">ссылка</a>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <div class="col-lg-4">--}}
-                {{--                    <div class="social_icon">--}}
-                {{--                        <a href="#"><i class="fab fa-instagram"></i></a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-            </div>
-        </div>
+        @include('layout.footer')
     </footer>
     <!--::footer_part end::-->
 

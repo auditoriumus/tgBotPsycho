@@ -31,8 +31,7 @@
 
     <!--::footer_part start::-->
     <footer class="footer_part subscribe_part">
-        <div class="footer_iner">
-        </div>
+        @include('layout.footer')
     </footer>
     <!--::footer_part end::-->
 

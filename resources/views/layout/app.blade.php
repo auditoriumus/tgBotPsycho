@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <meta name="yandex-verification" content="8b0890b100708a82" />
 </head>
 
 @yield('body')

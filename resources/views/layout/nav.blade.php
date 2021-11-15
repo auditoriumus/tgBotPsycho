@@ -24,17 +24,17 @@
                                     <a class="dropdown-item" href="{{ route('questionnaire') }}">Анкета</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_3"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Лекции
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" href="https://www.ispring.ru">
-                                        Ispring
-                                    </a>
-                                </div>
-                            </li>
+{{--                            <li class="nav-item dropdown">--}}
+{{--                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_3"--}}
+{{--                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                    Лекции--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">--}}
+{{--                                    <a class="dropdown-item" href="https://orlova.ispringmarket.ru/organization/1/view/6710-WRXKF-XYTGX-W1duf">--}}
+{{--                                        --}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"

@@ -39,26 +39,32 @@
                                 который точно знает и проверил на себе как работает психологическая помощь.
                             </p>
                             <p>
-                                В своей работе, в блоге и в курсах я преследую одну большую и красивую цель: сделать так,
+                                В своей работе, в блоге и в курсах я преследую одну большую и красивую цель: сделать
+                                так,
                                 чтобы изменения, которые происходят в Вашей жизни Вас питали, а не разрушали.
                             </p>
                             <p>
-                                Общаясь с людьми на самые разные темы, я вижу одну вещь: от движения вперёд останавливает
-                                парализующий страх изменений. И в прошлом есть опыт, в котором изменения были невыносимыми.
+                                Общаясь с людьми на самые разные темы, я вижу одну вещь: от движения вперёд
+                                останавливает
+                                парализующий страх изменений. И в прошлом есть опыт, в котором изменения были
+                                невыносимыми.
                             </p>
                             <p>
-                                Я точно знаю, что опыт может быть другим. И один из способов его таким сделать — это работа
+                                Я точно знаю, что опыт может быть другим. И один из способов его таким сделать — это
+                                работа
                                 с психологом.
                             </p>
                             <p>
-                                У меня есть травматичный опыт работы в крупной фирме, с прекрасным доходом и слезами каждое
+                                У меня есть травматичный опыт работы в крупной фирме, с прекрасным доходом и слезами
+                                каждое
                                 утро перед дверьми в офис.
                             </p>
                             <p>
                                 У меня есть очень страшный опыт потери этой работы.
                             </p>
                             <p>
-                                Есть опыт начала психологической практики и выхода в интернет пространство в новой роли. (Я
+                                Есть опыт начала психологической практики и выхода в интернет пространство в новой роли.
+                                (Я
                                 знаю, как это, когда задают вопрос: «Ты теперь психолог? Совсем делать нечего?»)
                             </p>
                             <p>
@@ -68,7 +74,8 @@
                                 Есть опыт запуска курса, снятого на телефон первую волну коронавируса
                             </p>
                             <p>
-                                А впереди ещё много сложного и интересного. И я знаю, как, преобретая новый опыт становиться
+                                А впереди ещё много сложного и интересного. И я знаю, как, преобретая новый опыт
+                                становиться
                                 все более и более целостной.
                             </p>
                             <p>
@@ -123,7 +130,7 @@
                                 <div class="single_product_content">
                                     <h5></h5>
                                     <h2><a href="single-product.html">Онлайн марафон</a></h2>
-                                    <a href="https://www.ispring.ru" class="btn_3">Учавствовать</a>
+                                    <a href="https://orlova.ispringmarket.ru/content/8/info/%D0%9C%D0%B0%D1%80%D0%B0%D1%84%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE_%D1%82%D0%B5%D0%BB%D0%BE" class="btn_3">Учавствовать</a>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +147,7 @@
                                 <div class="single_product_content">
                                     <h5></h5>
                                     <h2><a href="single-product.html">Лекции</a></h2>
-                                    <a href="https://www.ispring.ru" class="btn_3">Посетить</a>
+                                    <a href="https://orlova.ispringmarket.ru/organization/1/view/6710-WRXKF-XYTGX-W1duf" class="btn_3">Посетить</a>
                                 </div>
                             </div>
                         </div>
@@ -170,64 +177,73 @@
 
 
     <!-- trending item start-->
-    {{--<section class="trending_items">--}}
-    {{--    <div class="container">--}}
-    {{--        <div class="row">--}}
-    {{--            <div class="col-lg-12">--}}
-    {{--                <div class="section_tittle text-center">--}}
-    {{--                    <h2>Lorem ipsum.</h2>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--        <div class="row">--}}
-    {{--            <div class="col-lg-4 col-sm-6">--}}
-    {{--                <div class="single_product_item">--}}
-    {{--                    <div class="single_product_item_thumb">--}}
-    {{--                        <img src="img/tranding_item/tranding_item_1.png" alt="#" class="img-fluid">--}}
-    {{--                    </div>--}}
-    {{--                    <h3><a href="single-product.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h3>--}}
-    {{--                    <p>Lorem ipsum.</p>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="col-lg-4 col-sm-6">--}}
-    {{--                <div class="single_product_item">--}}
-    {{--                    <img src="img/tranding_item/tranding_item_2.png" alt="#" class="img-fluid">--}}
-    {{--                    <h3><a href="single-product.html">Foam filling cotton slow rebound pillows</a></h3>--}}
-    {{--                    <p>lorem ipsum</p>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="col-lg-4 col-sm-6">--}}
-    {{--                <div class="single_product_item">--}}
-    {{--                    <img src="img/tranding_item/tranding_item_3.png" alt="#" class="img-fluid">--}}
-    {{--                    <h3><a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a></h3>--}}
-    {{--                    <p>lorem ipsum</p>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="col-lg-4 col-sm-6">--}}
-    {{--                <div class="single_product_item">--}}
-    {{--                    <img src="img/tranding_item/tranding_item_4.png" alt="#" class="img-fluid">--}}
-    {{--                    <h3><a href="single-product.html">Cervical pillow for airplane--}}
-    {{--                            car office nap pillow</a></h3>--}}
-    {{--                    <p>lorem ipsum</p>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="col-lg-4 col-sm-6">--}}
-    {{--                <div class="single_product_item">--}}
-    {{--                    <img src="img/tranding_item/tranding_item_5.png" alt="#" class="img-fluid">--}}
-    {{--                    <h3><a href="single-product.html">Foam filling cotton slow rebound pillows</a></h3>--}}
-    {{--                    <p>lorem ipsum</p>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="col-lg-4 col-sm-6">--}}
-    {{--                <div class="single_product_item">--}}
-    {{--                    <img src="img/tranding_item/tranding_item_6.png" alt="#" class="img-fluid">--}}
-    {{--                    <h3><a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a></h3>--}}
-    {{--                    <p>lorem ipsum</p>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    {{--</section>--}}
+    <section class="trending_items">
+        <div class="container">
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-12">--}}
+{{--                    <div class="section_tittle text-center">--}}
+{{--                        <h2>Lorem ipsum.</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-4 col-sm-6">--}}
+{{--                    <div class="single_product_item">--}}
+{{--                        <div class="single_product_item_thumb">--}}
+{{--                            <img src="img/tranding_item/tranding_item_1.png" alt="#" class="img-fluid">--}}
+{{--                        </div>--}}
+{{--                        <h3><a href="single-product.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h3>--}}
+{{--                        <p>Lorem ipsum.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-sm-6">--}}
+{{--                    <div class="single_product_item">--}}
+{{--                        <img src="img/tranding_item/tranding_item_2.png" alt="#" class="img-fluid">--}}
+{{--                        <h3><a href="single-product.html">Foam filling cotton slow rebound pillows</a></h3>--}}
+{{--                        <p>lorem ipsum</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-sm-6">--}}
+{{--                    <div class="single_product_item">--}}
+{{--                        <img src="img/tranding_item/tranding_item_3.png" alt="#" class="img-fluid">--}}
+{{--                        <h3><a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a></h3>--}}
+{{--                        <p>lorem ipsum</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-sm-6">--}}
+{{--                    <div class="single_product_item">--}}
+{{--                        <img src="img/tranding_item/tranding_item_4.png" alt="#" class="img-fluid">--}}
+{{--                        <h3><a href="single-product.html">Cervical pillow for airplane--}}
+{{--                                car office nap pillow</a></h3>--}}
+{{--                        <p>lorem ipsum</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-sm-6">--}}
+{{--                    <div class="single_product_item">--}}
+{{--                        <img src="img/tranding_item/tranding_item_5.png" alt="#" class="img-fluid">--}}
+{{--                        <h3><a href="single-product.html">Foam filling cotton slow rebound pillows</a></h3>--}}
+{{--                        <p>lorem ipsum</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-sm-6">--}}
+{{--                    <div class="single_product_item">--}}
+{{--                        <img src="img/tranding_item/tranding_item_6.png" alt="#" class="img-fluid">--}}
+{{--                        <h3><a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a></h3>--}}
+{{--                        <p>lorem ipsum</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_tittle text-center">
+                        <h2>Лекция про ценность себя</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Pvd5bCtmSMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
     <!-- trending item end-->
 
     <!-- client review part here -->
@@ -396,41 +412,7 @@
 
     <!--::footer_part start::-->
     <footer class="footer_part subscribe_part">
-        <div class="footer_iner">
-            <div class="container">
-                {{--            <div class="row justify-content-between align-items-center">--}}
-                {{--                <div class="col-lg-8">--}}
-                {{--                    <div class="footer_menu">--}}
-                {{--                        <div class="footer_logo">--}}
-                {{--                            <a href="index.html"><img src="" alt="#"></a>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="footer_menu_item">--}}
-                {{--                            <a href="index.html">ссылка</a>--}}
-                {{--                            <a href="about.html">ссылка</a>--}}
-                {{--                            <a href="product_list.html">ссылка</a>--}}
-                {{--                            <a href="#">ссылка</a>--}}
-                {{--                            <a href="blog.html">ссылка</a>--}}
-                {{--                            <a href="contact.html">ссылка</a>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <div class="col-lg-4">--}}
-                {{--                    <div class="social_icon">--}}
-                {{--                        <a href="#"><i class="fab fa-instagram"></i></a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-            </div>
-        </div>
-
-        {{--    <div class="copyright_part">--}}
-        {{--        <div class="container">--}}
-        {{--            <div class="row ">--}}
-        {{--                <div class="col-lg-12">--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--    </div>--}}
+        @include('layout.footer')
     </footer>
     <!--::footer_part end::-->
 

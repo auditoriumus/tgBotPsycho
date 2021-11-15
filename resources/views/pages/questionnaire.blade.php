@@ -26,7 +26,7 @@
                 <div class="col-lg-6 col-md-6 offset-md-3 offset-lg-3">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>Оставьте свои данные чтобы специалисты предложили удобные, для вас, даты.</h3>
+                            <h3>Оставьте свои данные и мы свяжемся с вами.</h3>
 
                             <form class="row contact_form" action="{{ route('add_questionnaire') }}" method="post">
                                 @csrf
@@ -70,11 +70,7 @@
 
     <!--::footer_part start::-->
     <footer class="footer_part subscribe_part">
-        <div class="footer_iner">
-            <div class="container">
-
-            </div>
-        </div>
+        @include('layout.footer')
     </footer>
     <!--::footer_part end::-->
 
