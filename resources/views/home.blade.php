@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="banner_img">
-            <img src="{{ asset('img/personal/main_photo.jpg') }}" alt="#" class="img-fluid">
+            <img src="{{ asset('img/personal/main_photo2.jpg') }}" alt="#" class="img-fluid">
             <img src="{{ asset('img/banner_pattern.png') }} " alt="#" class="pattern_img img-fluid">
         </div>
     </section>
@@ -237,7 +237,7 @@
                 <div class="col-lg-12">
                     <div class="section_tittle text-center">
                         <h2>Лекция про ценность себя</h2>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Pvd5bCtmSMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/Pvd5bCtmSMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
