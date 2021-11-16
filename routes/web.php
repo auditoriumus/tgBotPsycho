@@ -44,4 +44,14 @@ Route::group(['prefix' => 'pay'], function () {
     Route::post('sent_payment', [\App\Http\Controllers\SiteControllers\PayController::class, 'pay'])->name('sent_payment');
 });
 
+Route::group(['prefix' => 'information'], function () {
+    Route::get('service_rules', function () {
+        return view('pages.information.service_rules');
+    })->name('service_rules');
+    Route::get('offer', function () {
+        return view('pages.information.offer');
+    })->name('offer');
+
+});
+
 

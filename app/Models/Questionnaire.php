@@ -16,6 +16,7 @@ class Questionnaire extends Model
         'patronymic',
         'phone',
         'email',
-        'approval'
+        'approval',
+        'offer'
     ];
 }

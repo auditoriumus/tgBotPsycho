@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('body')
-    <body>
     <!--::header part start::-->
     @include('layout.nav')
     <!-- Header part end-->
@@ -17,6 +16,7 @@
             </div>
         </div>
     </section>
+    <body>
     <!-- breadcrumb part end-->
     @include('layout.errors')
     <!--================login_part Area =================-->
@@ -54,6 +54,10 @@
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="approval" checked required>
                                         <label for="f-option">Подтверждаю согласие на обработку персональных данных</label>
+                                    </div>
+                                    <div class="creat_account d-flex align-items-center">
+                                        <input type="checkbox" id="f-option" name="offer" checked required>
+                                        <label for="f-option">Подтверждаю согласие с <a href="{{ route('offer') }}">Договором публичной оферты</a></label>
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">
                                         отправить

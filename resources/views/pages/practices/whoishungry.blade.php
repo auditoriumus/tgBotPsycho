@@ -1,11 +1,11 @@
 @extends('layout.app')
 
 @section('body')
-    <body>
     <!--::header part start::-->
     @include('layout.nav')
     <!-- Header part end-->
     @include('layout.errors')
+    <body>
     <section class="breadcrumb_part">
         <div class="container">
             <div class="row">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <h2>Всего 990 рублей</h2>
+                    <h2>990 рублей</h2>
                     <div>
                         <a href="{{ route('questionnaire') }}" class="btn_1">Принять участие</a>
                     </div>

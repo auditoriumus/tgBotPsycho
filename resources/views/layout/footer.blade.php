@@ -8,7 +8,7 @@
                         <p>ИНН: 781697531334</p>
                         <p>ОГРНИП: 321784700219052</p>
                         <p>ТЕЛЕФОН: +7 (981) 162-93-69</p>
-{{--                        <p>EMAIL: admin@orlova.pro</p>--}}
+                        <p>EMAIL: admin@orlova.pro</p>
                     </div>
                 </div>
             </div>

@@ -45,6 +45,16 @@
                                     <a class="dropdown-item" href="{{ route('who_is_hungry') }}">Кто голоден внутри меня</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Информация
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                    <a class="dropdown-item" href="{{ route('service_rules') }}">Порядок оказания услуг</a>
+                                    <a class="dropdown-item" href="{{ route('offer') }}">Договор-оферта</a>
+                                </div>
+                            </li>
 
                         </ul>
                     </div>

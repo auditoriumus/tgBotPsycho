@@ -21,6 +21,8 @@ class CreateQuestionnairesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->boolean('approval');
+            $table->boolean('offer');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

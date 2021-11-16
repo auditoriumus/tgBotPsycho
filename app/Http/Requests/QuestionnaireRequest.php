@@ -28,7 +28,8 @@ class QuestionnaireRequest extends FormRequest
             'last_name' => 'required|string',
             'phone' => 'required|string',
             'email' => 'required|email',
-            'approval' => 'required'
+            'approval' => 'required',
+            'offer' => 'required'
         ];
     }
 
@@ -40,7 +41,8 @@ class QuestionnaireRequest extends FormRequest
             'phone.required' => 'Заполните номер телефона',
             'email.required' => 'Заполните email',
             'email.email' => 'Введите корректный адрес электронной почты',
-            'approval.required' => 'Подтвердите согласие на обработку персональных данных'
+            'approval.required' => 'Подтвердите согласие на обработку персональных данных',
+            'offer.required' => 'Подтвердите согласие c Договором публичной оферты'
         ];
     }
 }
