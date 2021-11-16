@@ -1,11 +1,11 @@
 @extends('layout.app')
 
 @section('body')
+    <body>
     <!--::header part start::-->
     @include('layout.nav')
     <!-- Header part end-->
     @include('layout.errors')
-    <body>
     <section class="breadcrumb_part">
         <div class="container">
             <div class="row">

@@ -18,12 +18,13 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-            <div class="col-lg-12">
-                @if(Session::has('error'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ Session::get('error') }}
-                    </div>
-                @endif
+                <div class="col-lg-12">
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('error') }}
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

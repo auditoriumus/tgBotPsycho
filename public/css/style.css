@@ -2492,7 +2492,9 @@ ul {
 }
 
 /* line 19, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_banner.scss */
+/*изменил для баннера*/
 .banner_part:after {
+    display: none;
   position: absolute;
   content: "";
   left: 0;

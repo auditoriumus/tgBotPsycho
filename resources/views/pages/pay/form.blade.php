@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('body')
+    <body>
     <!--::header part start::-->
     @include('layout.nav')
     <!-- Header part end-->
@@ -17,7 +18,6 @@
         </div>
     </section>
     <!-- breadcrumb part end-->
-    <body>
     @include('layout.errors')
     <!--================login_part Area =================-->
     <section class="login_part">
