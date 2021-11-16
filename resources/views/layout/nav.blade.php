@@ -53,6 +53,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     <a class="dropdown-item" href="{{ route('service_rules') }}">Порядок оказания услуг</a>
                                     <a class="dropdown-item" href="{{ route('offer') }}">Договор-оферта</a>
+                                    <a class="dropdown-item" href="{{ route('privacy') }}">Политика конфиденциальности</a>
                                 </div>
                             </li>
 

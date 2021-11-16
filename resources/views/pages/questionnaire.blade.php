@@ -53,7 +53,7 @@
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="approval" checked required>
-                                        <label for="f-option">Подтверждаю согласие на обработку персональных данных</label>
+                                        <label for="f-option">Подтверждаю согласие на <a href="{{ route('privacy') }}">обработку персональных данных</a></label>
                                     </div>
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="offer" checked required>

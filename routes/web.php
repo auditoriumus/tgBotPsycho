@@ -51,6 +51,9 @@ Route::group(['prefix' => 'information'], function () {
     Route::get('offer', function () {
         return view('pages.information.offer');
     })->name('offer');
+    Route::get('privacy', function () {
+        return view('pages.information.privacy');
+    })->name('privacy');
 
 });
 
