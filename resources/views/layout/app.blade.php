@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{env('APP_NAME')}}</title>
-    <link rel="icon" href="{{asset('')}}">
+    <link rel="icon" href="{{asset('img/favicon.ico')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- animate CSS -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <meta name="format-detection" content="telephone=no" />
     <meta name="yandex-verification" content="8b0890b100708a82" />
 </head>
 
