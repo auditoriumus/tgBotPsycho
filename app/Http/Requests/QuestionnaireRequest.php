@@ -20,7 +20,6 @@ class QuestionnaireRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'last_name' => 'required|string',
             'phone' => 'required|string',
             'email' => 'required|email',
             'approval' => 'required',
@@ -32,7 +31,6 @@ class QuestionnaireRequest extends FormRequest
     {
         return [
             'name.required' => 'Заполните имя',
-            'last_name.required' => 'Заполните фамилию',
             'phone.required' => 'Заполните номер телефона',
             'email.required' => 'Заполните email',
             'email.email' => 'Введите корректный адрес электронной почты',

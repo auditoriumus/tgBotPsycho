@@ -14,7 +14,7 @@ class QuestionnaireController extends Controller
     public function addQuestionnaire(QuestionnaireRequest $request)
     {
         if (app(AddNewQuestionnaireService::class)->addNew($request->all())) {
-            return redirect('/')->with('success', 'Спасибо, анкета добавлена');
+            return redirect('/confirm')->with('success', 'Спасибо, анкета добавлена. Остался один шаг');
         }
     }
 }

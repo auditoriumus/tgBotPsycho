@@ -32,16 +32,16 @@
                                 @csrf
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"
-                                           placeholder="Имя*">
+                                           placeholder="ФИО*">
                                 </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name') }}"
-                                           placeholder="Фамилия*">
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="patronymic" name="patronymic" value="{{ old('patronymic') }}"
-                                           placeholder="Отчество">
-                                </div>
+{{--                                <div class="col-md-12 form-group p_star">--}}
+{{--                                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name') }}"--}}
+{{--                                           placeholder="Фамилия*">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-12 form-group p_star">--}}
+{{--                                    <input type="text" class="form-control" id="patronymic" name="patronymic" value="{{ old('patronymic') }}"--}}
+{{--                                           placeholder="Отчество">--}}
+{{--                                </div>--}}
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"
                                            placeholder="Телефон*">
