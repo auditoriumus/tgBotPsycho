@@ -57,4 +57,8 @@ Route::group(['prefix' => 'information'], function () {
 
 });
 
+Route::get('/confirm', function () {
+    return view('confirm');
+});
+
 

@@ -20,7 +20,7 @@
     <!-- breadcrumb part end-->
     @include('layout.errors')
     <!--================login_part Area =================-->
-    <section class="login_part section_padding ">
+    <section class="login_part">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 offset-md-3 offset-lg-3">
@@ -52,11 +52,11 @@
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="approval" checked required>
+                                        <input type="checkbox" id="f-option" name="approval" required>
                                         <label for="f-option">Подтверждаю согласие на <a href="{{ route('privacy') }}">обработку персональных данных</a></label>
                                     </div>
                                     <div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="offer" checked required>
+                                        <input type="checkbox" id="f-option" name="offer" required>
                                         <label for="f-option">Подтверждаю согласие с <a href="{{ route('offer') }}">Договором публичной оферты</a></label>
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">

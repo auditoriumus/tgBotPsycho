@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <meta name="format-detection" content="telephone=no" />
     <meta name="yandex-verification" content="8b0890b100708a82" />
+    <script src="https://image.sendsay.ru/app/js/forms/forms.min.js"></script>
 </head>
 
 @yield('body')
