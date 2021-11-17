@@ -3,43 +3,16 @@
 namespace App\Http\Controllers\SiteControllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
 use App\Http\Services\OrderServices\AddNewOrderService;
-use Illuminate\Contracts\Support\MessageProvider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class PayController extends Controller
 {
-    public function pay(Request $request)
+    public function pay(OrderRequest $request)
     {
-        return redirect('/')->with('error', 'В данный момент оплата недоступна');
         app(AddNewOrderService::class)->createOrder($request->all());
-        dd($request);
+        return view('pages.pay.pay');
+        return redirect('/')->with('error', 'В данный момент оплата недоступна');
     }
 
-    public function paymentService()
-    {
-        $mrh_login = "Meits";
-        $mrh_pass1 = "1234567890q";
-
-        // номер заказа
-        $inv_id = 1;
-
-        // описание заказа
-        $inv_desc = "Оплата за тестовый товар";
-
-        // сумма заказа
-        $out_summ = "100";
-
-        // артикул товара товара
-        $shp_art = "05622";
-
-        $in_curr = "WMRM";
-
-        // язык
-        $culture = "ru";
-
-        // формирование подписи
-        $crc = md5("$mrh_login:$out_summ:$inv_id:$mrh_pass1:Shp_Art=$shp_art");
-    }
 }

@@ -47,7 +47,7 @@
                 <div class="mt-5 text-center">
                     <h2>990 рублей</h2>
                     <div>
-                        <a href="{{ route('questionnaire') }}" class="btn_1">Принять участие</a>
+                        <a href="{{ route('take_a_part') }}" class="btn_1">Принять участие</a>
                     </div>
                 </div>
             </div>

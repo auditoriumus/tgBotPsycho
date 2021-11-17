@@ -4,13 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestionnaireRequest extends FormRequest
+class OrderRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
@@ -20,7 +15,6 @@ class QuestionnaireRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'last_name' => 'required|string',
             'phone' => 'required|string',
             'email' => 'required|email',
             'approval' => 'required',
@@ -32,7 +26,6 @@ class QuestionnaireRequest extends FormRequest
     {
         return [
             'name.required' => 'Заполните имя',
-            'last_name.required' => 'Заполните фамилию',
             'phone.required' => 'Заполните номер телефона',
             'email.required' => 'Заполните email',
             'email.email' => 'Введите корректный адрес электронной почты',

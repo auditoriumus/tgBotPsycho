@@ -28,7 +28,6 @@
             </div>
         </section>
     </section>
-
     <!--::footer_part start::-->
     <footer class="footer_part subscribe_part">
         @include('layout.footer')
