@@ -23,8 +23,17 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <h1>Благодарим вас за оплату. Мы скоро с вами свяжемся.</h1>
+                        <h3>Не забудь подписаться на мои письма чтобы не упустить ничего важного.</h3>
                     </div>
                 </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-3"></div><!--Пустой блок с права-->
+                <div class="col-md-6 p-3">
+                    <div data-sendsay-form-embedded="x_1635889843932493/2"></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-3"></div><!--Пустой блок с лева-->
             </div>
         </section>
     </section>

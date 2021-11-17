@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"
-                                           placeholder="Имя*">
+                                           placeholder="ФИО*">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"

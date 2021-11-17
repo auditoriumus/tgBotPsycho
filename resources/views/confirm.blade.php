@@ -16,7 +16,6 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-3"></div><!--Пустой блок с лева-->
-
             </div>
         </div>
     </section>
