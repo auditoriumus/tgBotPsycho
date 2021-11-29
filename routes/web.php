@@ -28,6 +28,7 @@ Route::post('/questionnaire', [\App\Http\Controllers\SiteControllers\Questionnai
 
 Route::group(['prefix' => 'practices'], function () {
     Route::get('who_is_hungry', [\App\Http\Controllers\SiteControllers\Practices\HungryController::class, 'index'])->name('who_is_hungry');
+    Route::get('i_allow', [\App\Http\Controllers\SiteControllers\Practices\IallowController::class, 'index'])->name('i_allow');
 });
 
 Route::group(['prefix' => 'pay'], function () {

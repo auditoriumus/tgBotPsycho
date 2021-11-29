@@ -30,30 +30,38 @@
 
                             <form class="row contact_form" action="{{ route('sent_payment') }}" method="post">
                                 @csrf
+                                @if(app('request')->has('practice'))
+                                    <input type="text" name="practice" hidden value="{{app('request')->input('practice')}}"/>
+                                @endif
                                 <div class="col-md-12 form-group p_star">
                                     <input type="number" class="form-control" id="amount" name="amount" value="990.00"
                                            placeholder="Сумма*">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           value="{{ old('name') }}"
                                            placeholder="ФИО*">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                           value="{{ old('phone') }}"
                                            placeholder="Телефон*">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}"
+                                    <input type="text" class="form-control" id="email" name="email"
+                                           value="{{ old('email') }}"
                                            placeholder="Email*">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="approval" required>
-                                        <label for="f-option">Подтверждаю согласие на <a href="{{ route('privacy') }}">обработку персональных данных</a></label>
+                                        <label for="f-option">Подтверждаю согласие на <a href="{{ route('privacy') }}">обработку
+                                                персональных данных</a></label>
                                     </div>
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="offer" required>
-                                        <label for="f-option">Подтверждаю согласие с <a href="{{ route('offer') }}">Договором публичной оферты</a></label>
+                                        <label for="f-option">Подтверждаю согласие с <a href="{{ route('offer') }}">Договором
+                                                публичной оферты</a></label>
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">
                                         Сформировать платеж

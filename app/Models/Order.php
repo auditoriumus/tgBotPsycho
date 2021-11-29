@@ -16,6 +16,7 @@ class Order extends Model
         'email',
         'phone',
         'amount',
-        'approval'
+        'approval',
+        'practice'
     ];
 }

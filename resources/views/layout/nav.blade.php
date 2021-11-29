@@ -43,6 +43,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     <a class="dropdown-item" href="{{ route('who_is_hungry') }}">Кто голоден внутри меня</a>
+                                    <a class="dropdown-item" href="{{ route('i_allow') }}">Я разрешаю себе удовольствие и наслаждение</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
